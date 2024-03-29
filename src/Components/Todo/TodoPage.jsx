@@ -43,45 +43,55 @@ const TodoPage = () => {
           Add Todo
         </button>
       </div>
-      <div className="mt-8">
-        {/* Render incomplete todos */}
-        <div className="mb-5">
-          {incompleteTodos.map((todo) => (
-            <div key={todo.id} className="my-3">
-              <TodoCard todo={todo} />
+      {todos.length > 0 ? (
+        <>
+          <div className="mt-8">
+            {/* Render incomplete todos */}
+            <div className="mb-5">
+              {incompleteTodos.map((todo) => (
+                <div key={todo.id} className="my-3">
+                  <TodoCard todo={todo} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        {/* Button to toggle the visibility of completed tasks */}
-        {completedTodos.length > 0 && (
-          <button
-            className="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 border border-gray-300 rounded-md mb-4"
-            onClick={toggleShowCompleted}>
-            {showCompleted ? (
-              <>
-                <KeyboardArrowDownIcon /> Hide Completed {"("}
-                {completedTodos.length > 0 && completedTodos.length}
-                {")"}
-              </>
-            ) : (
-              <>
-                <KeyboardArrowRightIcon /> Show Completed {"("}
-                {completedTodos.length > 0 && completedTodos.length}
-                {")"}
-              </>
+            {/* Button to toggle the visibility of completed tasks */}
+            {completedTodos.length > 0 && (
+              <button
+                className="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 border border-gray-300 rounded-md mb-4"
+                onClick={toggleShowCompleted}>
+                {showCompleted ? (
+                  <>
+                    <KeyboardArrowDownIcon /> Hide Completed {"("}
+                    {completedTodos.length > 0 && completedTodos.length}
+                    {")"}
+                  </>
+                ) : (
+                  <>
+                    <KeyboardArrowRightIcon /> Show Completed {"("}
+                    {completedTodos.length > 0 && completedTodos.length}
+                    {")"}
+                  </>
+                )}
+              </button>
             )}
-          </button>
-        )}
 
-        {/* Render completed todos if showCompleted is true */}
-        {showCompleted &&
-          completedTodos.map((todo) => (
-            <div key={todo.id} className="my-3">
-              <TodoCard todo={todo} />
-            </div>
-          ))}
-      </div>
+            {/* Render completed todos if showCompleted is true */}
+            {showCompleted &&
+              completedTodos.map((todo) => (
+                <div key={todo.id} className="my-3">
+                  <TodoCard todo={todo} />
+                </div>
+              ))}
+          </div>
+        </>
+      ) : (
+        <>
+          <h1 className=" text-2xl px-6 text-center md:text-3xl mt-48">
+            Ready to conquer your day? Start making todos now 📝
+          </h1>
+        </>
+      )}
     </div>
   );
 };
