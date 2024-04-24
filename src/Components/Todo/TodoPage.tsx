@@ -5,10 +5,11 @@ import { AddTodo } from "../TodoStore/TodoReducers";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 const TodoPage = () => {
-  const todos = useSelector((state) => state.todos);
+  const getState = useSelector((state) => console.log(state));
+  const todos = useSelector((state: any) => state.todos);
   const dispatch = useDispatch();
-  const [newTodoText, setNewTodoText] = useState(""); // State to store the new todo text
-  const [showCompleted, setShowCompleted] = useState(false); // State to control the visibility of completed tasks
+  const [newTodoText, setNewTodoText] = useState<string>(""); // State to store the new todo text
+  const [showCompleted, setShowCompleted] = useState<boolean>(false); // State to control the visibility of completed tasks
 
   const handleAddTodo = () => {
     // Dispatch the AddTodo action with the new todo text

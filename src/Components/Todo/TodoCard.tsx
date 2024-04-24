@@ -12,10 +12,10 @@ import {
 
 const TodoCard = ({ todo }) => {
   const dispatch = useDispatch();
-  const [editMode, setEditMode] = useState(false);
-  const [updatedText, setUpdatedText] = useState(todo.text);
+  const [editMode, setEditMode] = useState<boolean>(false);
+  const [updatedText, setUpdatedText] = useState<string>(todo.text);
 
-  const handleToggleEditMode = () => {
+  const handleToggleEditMode = ():void => {
     setEditMode(!editMode);
   };
 
@@ -29,7 +29,7 @@ const TodoCard = ({ todo }) => {
   };
 
   const checkStatus = () => {
-    dispatch(ToggleTodoStatus({ id: todo.id }));
+    dispatch(ToggleTodoStatus( todo.id ));
   };
 
   return (
